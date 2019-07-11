@@ -34,7 +34,10 @@ function success_handler() {
 
 	// Set up routes.
 	app.post("/reply", getReply);
-	app.get("/", showUsage);
+	app.get("/", (req, res) => {
+		res.status(200).send({sanityCheck: 'Successful!'})
+		.catch(err => console.log(err))
+	});
 	app.get("*", showUsage);
 
 	port = process.env.PORT || 2001

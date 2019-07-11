@@ -29,20 +29,17 @@ function success_handler() {
 
 	// Parse application/json inputs.
 	app.use(bodyParser.json());
-	
 	app.set("json spaces", 4);
 
 	// Set up routes.
 	app.post("/reply", getReply);
-	app.get("/", (req, res) => {
-		res.status(200).send({sanityCheck: 'Successful!'})
-		.catch(err => console.log(err))
-	});
+	app.get("/", showUsage);
 	app.get("*", showUsage);
 
 	port = process.env.PORT || 2001
+	host = '0.0.0.0'
 	// Start listening.
-	app.listen(2001, function() {
+	app.listen(port, function() {
 		console.log(`Listening on ${port}`);
 	});
 }

@@ -14,6 +14,7 @@ require("babel-polyfill");
 var express = require("express"),
 	bodyParser = require("body-parser"),
 	RiveScript = require("./lib/rivescript.js");
+	cors = require('cors')
 
 
 // Create the bot.
@@ -29,6 +30,7 @@ function success_handler() {
 
 	// Parse application/json inputs.
 	app.use(bodyParser.json());
+	app.use(cors());
 	app.set("json spaces", 4);
 
 	// Set up routes.
